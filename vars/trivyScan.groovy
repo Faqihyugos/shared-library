@@ -23,7 +23,8 @@ def call(Map args = [:]) {
               -v \$(pwd):/workspace \
               ${cacheVolume} \
               aquasec/trivy:latest fs \
-              --timeout 20m \
+              --db-repository ghcr.io/aquasecurity/trivy-db:2 \
+	      --timeout 10m \
 	      --scanners vuln,secret,misconfig \
               --severity HIGH,CRITICAL \
               --exit-code ${exitCode} \
